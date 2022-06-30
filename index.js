@@ -136,21 +136,20 @@ function questions(){
     const managerHtml = () => {
         const {name, id, email, officeNumber}= managerAccount
      
-        let teamHtml = `
-            <div class="team">
-                <div class="card">
-                    <div class="card-header">
-                    <h2>${name}</h2>
-                    <p>Employee ID: ${id}</p>
-                    <p>Email: <a href="mailto:${email}">${email}</a></p>
-                    <p>Office Number: ${officeNumber}</p>
-                    </div>
-                </div>
+        let teamHtml = `<div class="team">
+        <div class="card">
+            <div class="card-header">
+            <h2>${name}</h2>
+            <p>Employee ID: ${id}</p>
+            <p>Email: <a href="mailto:${email}">${email}</a></p>
+            <p>Office Number: ${officeNumber}</p>
             </div>
+        </div>
+    </div>
     <!--managers-->`
         
         const fs = require('fs');
-        fs.readFile("./dist/team.html",{encoding:'utf8', flag:'r'}, (err, data) =>{
+        fs.readFile("./team.html",{encoding:'utf8', flag:'r'}, (err, data) =>{
            if (err) {
                return console.log(err);
            }
@@ -165,17 +164,16 @@ function questions(){
     const engineerHtml = () => {
         const {name, id, email, github}= engineerAccount
      
-        let teamHtml = `
-            <div class="team">
-                <div class="card">
-                    <div class="card-header">
-                    <h2>${name}</h2>
-                    <p>Employee ID: ${id}</p>
-                    <p>Email: <a href="mailto:${email}">${email}</a></p>
-                    <p>GitHub: <a href="${github}" target="_blank">${github}</a></p>
-                    </div>
-                </div>
+        let teamHtml =  `<div class="team">
+        <div class="card">
+            <div class="card-header">
+            <h2>${name}</h2>
+            <p>Employee ID: ${id}</p>
+            <p>Email: <a href="mailto:${email}">${email}</a></p>
+            <p>GitHub: <a href="${github}" target="_blank">${github}</a></p>
             </div>
+        </div>
+    </div>
     <!--engineer-->`
         
         const fs = require('fs');
@@ -194,17 +192,16 @@ function questions(){
     const internHtml = () => {
         const {name, id, email, school}= internAccount
      
-        let teamHtml = `
-            <div class="team">
-                <div class="card">
-                    <div class="card-header">
-                    <h2>${name}</h2>
-                    <p>Employee ID: ${id}</p>
-                    <p>Email: <a href="mailto:${email}">${email}</a></p>
-                    <p>School: ${school}</p>
-                    </div>
-                </div>
+        let teamHtml = `<div class="team">
+        <div class="card">
+            <div class="card-header">
+            <h2>${name}</h2>
+            <p>Employee ID: ${id}</p>
+            <p>Email: <a href="mailto:${email}">${email}</a></p>
+            <p>School: ${school}</p>
             </div>
+        </div>
+    </div>
     <!--intern-->`
         
         const fs = require('fs');
@@ -212,7 +209,7 @@ function questions(){
             if (err) {
                 return console.log(err);
             }
-            let newTeamHtml = data.replace("<!--engineer-->", teamHtml);
+            let newTeamHtml = data.replace("<!--intern-->", teamHtml);
             
                 fs.writeFile("./dist/team.html", newTeamHtml, 'utf8', function (err) {
                     if (err) return console.log(err);
