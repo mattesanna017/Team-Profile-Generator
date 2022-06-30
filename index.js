@@ -2,8 +2,8 @@ const Manager = require ('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require ('./lib/Intern');
 
-
-let enginerAccount;
+let managerAccount;
+let engineerAccount;
 let internAccount;
 
 questions()
@@ -16,7 +16,7 @@ function questions(){
             type:"list",
             name:"positionsList",
             message:"Pick a position",
-            choices:["Manager", "Enginner", "Intern"]
+            choices:["Manager", "Engineer", "Intern", "Close Terminal"]
         },
     ])
     .then((position) => {
@@ -24,12 +24,16 @@ function questions(){
             managerQuestions (position)
         }
 
-        if (position.positionsList == "Enginner"){
+        if (position.positionsList == "Engineer"){
             engineerQuestions (position)
         }
 
         if (position.positionsList == "Intern"){
             internQuestions (position)
+        }
+
+        if (position.positionsList == "Close Terminal"){
+            return
         }
     })
 
@@ -39,22 +43,22 @@ function questions(){
             {
                 type: "input",
                 name:"name",
-                message:"Enter your name.",
+                message:"Enter name.",
             },
             {
                 type: "input",
                 name:"id",
-                message:"Enter your id.",
+                message:"Enter id.",
             },
             {
                 type: "input",
                 name:"email",
-                message:"Enter your email.",
+                message:"Enter email.",
             },
             {
                 type: "input",
                 name:"officeNumber",
-                message:"Enter your office number.",
+                message:"Enter office number.",
             },
         ])
         .then ((response)=>{
@@ -64,7 +68,70 @@ function questions(){
         })
     }
 
-    let managerAccount;
+    let engineerQuestions = () =>{
+        inquirer
+        .prompt([
+            {
+                type: "input",
+                name:"name",
+                message:"Enter name.",
+            },
+            {
+                type: "input",
+                name:"id",
+                message:"Enter id.",
+            },
+            {
+                type: "input",
+                name:"email",
+                message:"Enter email.",
+            },
+            {
+                type: "input",
+                name:"github",
+                message:"Enter Github Account Username.",
+            },
+        ])
+        .then ((response)=>{
+            engineerAccount = new Engineer (response.name, response.id, response.email, response.github)
+            engineerHtml()
+            questions.call(this)
+        })
+    }
+
+    let internQuestions = () =>{
+        inquirer
+        .prompt([
+            {
+                type: "input",
+                name:"name",
+                message:"Enter name.",
+            },
+            {
+                type: "input",
+                name:"id",
+                message:"Enter id.",
+            },
+            {
+                type: "input",
+                name:"email",
+                message:"Enter email.",
+            },
+            {
+                type: "input",
+                name:"school",
+                message:"Enter School Name.",
+            },
+        ])
+        .then ((response)=>{
+            internAccount = new Intern (response.name, response.id, response.email, response.school)
+            internHtml()
+            questions.call(this)
+        })
+    }
+
+
+  
 
     const managerHtml = () => {
         const {name, id, email, officeNumber}= managerAccount
@@ -80,55 +147,21 @@ function questions(){
                     </div>
                 </div>
             </div>
-            <!--managers-->`
+    <!--managers-->`
         
         const fs = require('fs');
-        fs.readFile("./dist/team.html",{encoding:'utf8', flag:'r'}, (err, data) =>
-            err? console.log(err) : console.log("Manager Account has been created"));
-
-            let newTeamHtml = data.replace("<!--managers-->", teamHtml);
-     
-                fs.writeFile("./dist/team.html", newTeamHtml, 'utf8', (err) =>
-                err? console.log(err) : console.log("Manager Account has been rendered")
-                );
-    };   
+        fs.readFile("./dist/team.html",{encoding:'utf8', flag:'r'}, (err, data) =>{
+           if (err) {
+               return console.log(err);
+           }
+           let newTeamHtml = data.replace("<!--managers-->", teamHtml);
     
-
-
-
-    let engineerQuestions = () =>{
-        inquirer
-        .prompt([
-            {
-                type: "input",
-                name:"name",
-                message:"Enter your name.",
-            },
-            {
-                type: "input",
-                name:"id",
-                message:"Enter your id.",
-            },
-            {
-                type: "input",
-                name:"email",
-                message:"Enter your email.",
-            },
-            {
-                type: "input",
-                name:"github",
-                message:"Enter your Github account name.",
-            },
-        ])
-        .then ((response)=>{
-            enginerAccount = new Engineer (response.name, response.id, response.email, response.github)
-            engineerHtml()
-            questions.call(this)
-        })
-    }
-
-    let engineerAccount;
-
+               fs.writeFile("./dist/team.html", newTeamHtml, 'utf8', function (err) {
+                   if (err) return console.log(err);
+               });
+           });   
+    };
+    
     const engineerHtml = () => {
         const {name, id, email, github}= engineerAccount
      
@@ -143,54 +176,20 @@ function questions(){
                     </div>
                 </div>
             </div>
-            <!--engineer-->`
+    <!--engineer-->`
         
         const fs = require('fs');
-        fs.readFile("./dist/team.html",{encoding:'utf8', flag:'r'}, (err, data) =>
-            err? console.log(err) : console.log("Engineer Account has been created"));
-
+        fs.readFile("./dist/team.html",{encoding:'utf8', flag:'r'}, (err, data) =>{
+            if (err) {
+                return console.log(err);
+            }
             let newTeamHtml = data.replace("<!--engineer-->", teamHtml);
-     
-                fs.writeFile("./dist/team.html", newTeamHtml, 'utf8', (err) =>
-                err? console.log(err) : console.log("Engineer Account has been rendered")
-                );
-    }; 
-
-
-
-
-    let internQuestions = () =>{
-        inquirer
-        .prompt([
-            {
-                type: "input",
-                name:"name",
-                message:"Enter your name.",
-            },
-            {
-                type: "input",
-                name:"id",
-                message:"Enter your id.",
-            },
-            {
-                type: "input",
-                name:"email",
-                message:"Enter your email.",
-            },
-            {
-                type: "input",
-                name:"school",
-                message:"Enter your last school name.",
-            },
-        ])
-        .then ((response)=>{
-            enginerAccount = new Engineer (response.name, response.id, response.email, response.school)
-            internHtml()
-            questions.call(this)
-        })
-    }
-
-    let internAccount;
+        
+                fs.writeFile("./dist/team.html", newTeamHtml, 'utf8', function (err) {
+                    if (err) return console.log(err);
+                });
+            });   
+    };
 
     const internHtml = () => {
         const {name, id, email, school}= internAccount
@@ -206,17 +205,19 @@ function questions(){
                     </div>
                 </div>
             </div>
-            <!--intern-->`
+    <!--intern-->`
         
         const fs = require('fs');
-        fs.readFile("./dist/team.html",{encoding:'utf8', flag:'r'}, (err, data) =>
-            err? console.log(err) : console.log("Intern Account has been created"));
-
-            let newTeamHtml = data.replace("<!--intern-->", teamHtml);
-     
-                fs.writeFile("./dist/team.html", newTeamHtml, 'utf8', (err) =>
-                err? console.log(err) : console.log("Intern Account has been rendered")
-                );
-    }; 
-
+        fs.readFile("./dist/team.html",{encoding:'utf8', flag:'r'}, (err, data) =>{
+            if (err) {
+                return console.log(err);
+            }
+            let newTeamHtml = data.replace("<!--engineer-->", teamHtml);
+            
+                fs.writeFile("./dist/team.html", newTeamHtml, 'utf8', function (err) {
+                    if (err) return console.log(err);
+                });
+            });
+    }  
 }
+
