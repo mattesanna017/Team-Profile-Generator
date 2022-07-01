@@ -139,7 +139,7 @@ function questions(){
         let teamHtml = `<div class="team">
         <div class="card">
             <div class="card-header">
-            <h3> Position: Manager>
+            <h3> Position: Manager</h3>
             <h2>${name}</h2>
             <p>Employee ID: ${id}</p>
             <p>Email: <a href="mailto:${email}">${email}</a></p>
