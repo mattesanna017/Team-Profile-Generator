@@ -139,6 +139,7 @@ function questions(){
         let teamHtml = `<div class="team">
         <div class="card">
             <div class="card-header">
+            <h3> Position: Manager>
             <h2>${name}</h2>
             <p>Employee ID: ${id}</p>
             <p>Email: <a href="mailto:${email}">${email}</a></p>
@@ -167,6 +168,7 @@ function questions(){
         let teamHtml =  `<div class="team">
         <div class="card">
             <div class="card-header">
+            <h3> Position: Engineer </h3>
             <h2>${name}</h2>
             <p>Employee ID: ${id}</p>
             <p>Email: <a href="mailto:${email}">${email}</a></p>
@@ -196,6 +198,7 @@ function questions(){
         <div class="card">
             <div class="card-header">
             <h2>${name}</h2>
+            <h3> Position: Intern </h3>
             <p>Employee ID: ${id}</p>
             <p>Email: <a href="mailto:${email}">${email}</a></p>
             <p>School: ${school}</p>
