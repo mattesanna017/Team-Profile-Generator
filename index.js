@@ -149,7 +149,7 @@ function questions(){
     <!--managers-->`
         
         const fs = require('fs');
-        fs.readFile("./team.html",{encoding:'utf8', flag:'r'}, (err, data) =>{
+        fs.readFile("./dist/team.html",{encoding:'utf8', flag:'r'}, (err, data) =>{
            if (err) {
                return console.log(err);
            }
