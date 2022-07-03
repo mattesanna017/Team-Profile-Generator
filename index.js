@@ -2,9 +2,9 @@ const Manager = require ('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require ('./lib/Intern');
 
-let managerAccount;
-let engineerAccount;
-let internAccount;
+
+
+
 
 questions()
 
@@ -131,7 +131,7 @@ function questions(){
     }
 
 
-  
+    let managerAccount;
 
     const managerHtml = () => {
         const {name, id, email, officeNumber}= managerAccount
@@ -162,6 +162,9 @@ function questions(){
            });   
     };
     
+
+    let engineerAccount;
+
     const engineerHtml = () => {
         const {name, id, email, github}= engineerAccount
      
@@ -190,6 +193,9 @@ function questions(){
                 });
             });   
     };
+
+    
+    let internAccount;
 
     const internHtml = () => {
         const {name, id, email, school}= internAccount
