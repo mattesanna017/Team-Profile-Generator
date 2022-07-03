@@ -33,20 +33,12 @@ THEN I exit the application, and the HTML is generated
 
 ## Walkthrough video Link
 
-```md
 
-```
 
 ## Team Profile Generator Screenshot
 
-
-```md
-
-```
-
+![alt text](./assets/screen-tg.PNG "screenshot of Team Generator")
 
 ## URL of GitHub repository
 
-```md
 https://github.com/mattesanna017/week-10-homework
-```
