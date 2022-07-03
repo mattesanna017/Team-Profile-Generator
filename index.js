@@ -3,9 +3,6 @@ const Engineer = require('./lib/Engineer');
 const Intern = require ('./lib/Intern');
 
 
-
-
-
 questions()
 
 function questions(){

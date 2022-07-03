@@ -37,9 +37,16 @@ THEN I exit the application, and the HTML is generated
 
 ```
 
+## Team Profile Generator Screenshot
+
+
+```md
+
+```
+
 
 ## URL of GitHub repository
 
 ```md
-
+https://github.com/mattesanna017/week-10-homework
 ```
