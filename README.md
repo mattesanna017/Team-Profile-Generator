@@ -33,7 +33,7 @@ THEN I exit the application, and the HTML is generated
 
 ## Walkthrough video Link
 
-
+https://youtu.be/v2EJsWwoFgo
 
 ## Team Profile Generator Screenshot
 
