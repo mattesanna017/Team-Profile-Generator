@@ -32,8 +32,12 @@ THEN I exit the application, and the HTML is generated
 
 
 ## Walkthrough video Link
+Demonstration on VS Code
+https://youtu.be/LZEEDEEQFgA
 
-https://youtu.be/v2EJsWwoFgo
+
+Demonstration on browser
+https://youtu.be/caM3DTbF468
 
 ## Team Profile Generator Screenshot
 
